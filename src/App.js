@@ -6,6 +6,7 @@ import UserProvider from "./context/UserContext";
 import Shop from "./routes/shop/Shop";
 import { ProductsProvider } from "./context/ProductsContext";
 import { CartProvider } from "./context/CartContext";
+import Checkout from "./routes/checkout/Checkout";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
                 <Route path="/home" element={<Home />} />
                 <Route path="/shop" element={<Shop />} />
                 <Route path="/auth" element={<Authentication />} />
+                <Route path="/checkout" element={<Checkout />} />
               </Route>
               <Route path="*" element={<p>not found</p>} />
             </Routes>

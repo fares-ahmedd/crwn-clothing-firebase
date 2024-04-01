@@ -26,7 +26,13 @@ function CartProvider({ children }) {
   function addItemToCart(productToAdd) {
     setCartItems(addCartItem(cartItems, productToAdd));
   }
-  const value = { isCartOpen, setIsCartOpen, addItemToCart, cartItems };
+  const value = {
+    isCartOpen,
+    setIsCartOpen,
+    addItemToCart,
+    cartItems,
+    setCartItems,
+  };
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
 

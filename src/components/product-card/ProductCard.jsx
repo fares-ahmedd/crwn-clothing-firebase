@@ -3,9 +3,10 @@ import Button from "../button/Button";
 import "./ProductCard.styles.scss";
 function ProductCard({ product }) {
   const { name, price, imageUrl } = product;
-  const { addItemToCart } = useCart();
+  const { addItemToCart, setIsCartOpen } = useCart();
   function addProductToCart() {
     addItemToCart(product);
+    setIsCartOpen(true);
   }
   return (
     <div className="product-card-container">
