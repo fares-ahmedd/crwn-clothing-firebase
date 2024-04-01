@@ -24,11 +24,10 @@ function SignInForm() {
     e.preventDefault();
     if (!signInPassword || !signInEmail) return;
     try {
-      const response = await signInWithEmailAndPasswordFunc(
+      const { user } = await signInWithEmailAndPasswordFunc(
         signInEmail,
         signInPassword
       );
-      console.log(response);
       setFormFields(defaultFormFields);
     } catch (error) {
       if (error.message === "Firebase: Error (auth/invalid-credential).") {
@@ -40,7 +39,6 @@ function SignInForm() {
   const signInWithGoogle = async () => {
     try {
       const { user } = await signInWithGooglePopup();
-      await createUserDocumentFromAuth(user);
     } catch (error) {
       console.log(
         `it seems like the user closed the log in window : ${error.message}`

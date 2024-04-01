@@ -4,7 +4,13 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
-  background-color: silver;
+  background: linear-gradient(90deg, #f0f0f0, #e0e0e0);
+  position: sticky;
+  top: 0px;
+  border-bottom: 1px solid lightgray;
+  padding: 10px;
+
+  z-index: 99999;
   .logo-container {
     height: 100%;
     width: fit-content;
