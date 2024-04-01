@@ -5,22 +5,25 @@ import Authentication from "./routes/auth/Authentication";
 import UserProvider from "./context/UserContext";
 import Shop from "./routes/shop/Shop";
 import { ProductsProvider } from "./context/ProductsContext";
+import { CartProvider } from "./context/CartContext";
 
 function App() {
   return (
     <UserProvider>
       <ProductsProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<AppLayout />}>
-              <Route index element={<Navigate replace to={"/home"} />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/shop" element={<Shop />} />
-              <Route path="/auth" element={<Authentication />} />
-            </Route>
-            <Route path="*" element={<p>not found</p>} />
-          </Routes>
-        </BrowserRouter>
+        <CartProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<AppLayout />}>
+                <Route index element={<Navigate replace to={"/home"} />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/shop" element={<Shop />} />
+                <Route path="/auth" element={<Authentication />} />
+              </Route>
+              <Route path="*" element={<p>not found</p>} />
+            </Routes>
+          </BrowserRouter>
+        </CartProvider>
       </ProductsProvider>
     </UserProvider>
   );

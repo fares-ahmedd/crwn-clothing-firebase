@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
 import "./Header.styles.scss";
 import { ReactComponent as CrwnLogo } from "../../assets/CrownLogo.svg";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 import CartIcon from "../cart-icon/CartIcon";
 import CartDropdown from "../cart-dropdown/CartDropdown";
+import { useCart } from "../../context/CartContext";
 
 function Header() {
   const { currentUser } = useContext(UserContext);
-  const [openCart, setOpenCart] = useState(false);
+  const { isCartOpen } = useCart();
   async function signOutHandler() {
     try {
       await signOutUser();
@@ -40,11 +41,11 @@ function Header() {
               </Link>
             )}
           </li>
-          <li onClick={() => setOpenCart((cart) => !cart)}>
+          <li className="cart-icon">
             <CartIcon />
           </li>
         </ul>
-        {openCart && <CartDropdown />}
+        {isCartOpen && <CartDropdown />}
       </header>
     </>
   );
