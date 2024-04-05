@@ -9,15 +9,17 @@ import CartDropdown from "../cart-dropdown/CartDropdown";
 import { useCart } from "../../context/CartContext";
 
 function Header() {
-  const { currentUser } = useContext(UserContext);
+  const { currentUser, setCurrentUser } = useContext(UserContext);
   const { isCartOpen } = useCart();
   async function signOutHandler() {
     try {
       await signOutUser();
+      setCurrentUser(null);
     } catch (error) {
       console.log(error.message);
     }
   }
+  console.log(currentUser);
   return (
     <>
       <header className="navigation">
